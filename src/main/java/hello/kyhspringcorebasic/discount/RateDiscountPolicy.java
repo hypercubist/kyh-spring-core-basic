@@ -1,10 +1,12 @@
 package hello.kyhspringcorebasic.discount;
 
+import hello.kyhspringcorebasic.annotation.MainDiscountPolicy;
 import hello.kyhspringcorebasic.member.Grade;
 import hello.kyhspringcorebasic.member.Member;
 import org.springframework.stereotype.Component;
 
 @Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
     private int discountPercent = 10;
 

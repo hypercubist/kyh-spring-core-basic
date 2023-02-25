@@ -1,5 +1,6 @@
 package hello.kyhspringcorebasic.order;
 
+import hello.kyhspringcorebasic.annotation.MainDiscountPolicy;
 import hello.kyhspringcorebasic.discount.DiscountPolicy;
 import hello.kyhspringcorebasic.discount.FixDiscountPolicy;
 import hello.kyhspringcorebasic.member.Member;
@@ -10,11 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
