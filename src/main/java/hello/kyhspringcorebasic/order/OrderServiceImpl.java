@@ -5,12 +5,16 @@ import hello.kyhspringcorebasic.discount.FixDiscountPolicy;
 import hello.kyhspringcorebasic.member.Member;
 import hello.kyhspringcorebasic.member.MemberRepository;
 import hello.kyhspringcorebasic.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
